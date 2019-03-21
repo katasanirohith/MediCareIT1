@@ -1,6 +1,7 @@
 package com.example.medicare;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,9 +13,14 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +31,10 @@ public class PatientDetails extends AppCompatActivity {
     editText_weight, editText_roomNumber, editText_password, editText_sex, editText_phone, editText_latitude,
     editText_longitude,editText_confirmPassword;
     private Button btn_register;
-    String server_url = "http://192.168.1.113/MediCare/includes/registerUser.php";
+    /*String server_url = "http://172.17.4.115/MediCare/includes/registerUser.php";
     AlertDialog.Builder builder;
+   */
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +55,8 @@ public class PatientDetails extends AppCompatActivity {
         editText_longitude = (EditText) findViewById(R.id.editText21);
         editText_confirmPassword = (EditText) findViewById(R.id.editText22);
         btn_register = (Button) findViewById(R.id.button1);
-        builder = new AlertDialog.Builder(PatientDetails.this);
+        progressDialog = new ProgressDialog(this);
+       // builder = new AlertDialog.Builder(PatientDetails.this);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +75,56 @@ public class PatientDetails extends AppCompatActivity {
                 latitude = editText_latitude.getText().toString();
                 longitude = editText_longitude.getText().toString();
                 confirmPassword = editText_confirmPassword.getText().toString();
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
+
+                progressDialog.setMessage("Registering User .. ");
+                progressDialog.show();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                        Constants.URL_REGISTER,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                progressDialog.dismiss();
+                                try{
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                }
+                                catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                progressDialog.hide();
+                                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("Pid",medical_id);
+                        params.put("Name",name);
+                        params.put("DOB",dob);
+                        params.put("email",email);
+                        params.put("Bloodgrp",bloodGroup);
+                        params.put("Hostel",hostel);
+                        params.put("weight",weight);
+                        params.put("Roomno",roomNumber);
+                        params.put("Password",password);
+                        params.put("Sex",sex);
+                        params.put("Mob_no",phone);
+                        params.put("lati",latitude);
+                        params.put("longi",longitude);
+                        params.put("ConfirmPass",confirmPassword);
+
+                        return params;
+                    }
+
+                };
+                /*StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -123,10 +181,10 @@ public class PatientDetails extends AppCompatActivity {
                         return params;
                     }
                 };
-                MySingleton.getInstance(PatientDetails.this).addToRequestQueue(stringRequest);
+                MySingleton.getInstance(PatientDetails.this).addToRequestQueue(stringRequest);*/
 
-                Intent intent = new Intent(PatientDetails.this , MainActivity.class);
-                startActivity(intent);
+                RequestQueue requestQueue = (RequestQueue) Volley.newRequestQueue(PatientDetails.this);
+                requestQueue.add(stringRequest);
             }
         });
     }
