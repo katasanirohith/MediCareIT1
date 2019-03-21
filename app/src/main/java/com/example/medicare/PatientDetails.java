@@ -19,6 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,6 +85,14 @@ public class PatientDetails extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 progressDialog.dismiss();
+                                try{
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                }
+                                catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
                             }
                         },
                         new Response.ErrorListener() {

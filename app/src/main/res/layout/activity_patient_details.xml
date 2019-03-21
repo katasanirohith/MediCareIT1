@@ -12,9 +12,7 @@
         android:stretchColumns="1">
 
         <!-- everything you already have -->
-        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/side_nav_bar"
@@ -22,11 +20,11 @@
 
             <EditText
                 android:id="@+id/editText11"
-                android:layout_width="366dp"
+                android:layout_width="341dp"
                 android:layout_height="39dp"
                 android:layout_marginTop="4dp"
                 android:ems="10"
-                android:hint="Medical ID"
+                android:hint="Pick a username"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/editText2"
                 app:layout_constraintTop_toBottomOf="@+id/editText2" />
@@ -57,38 +55,38 @@
 
             <EditText
                 android:id="@+id/editText2"
-                android:layout_width="387dp"
+                android:layout_width="341dp"
                 android:layout_height="37dp"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="Full Name"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
             <EditText
                 android:id="@+id/editText5"
-                android:layout_width="395dp"
+                android:layout_width="341dp"
                 android:layout_height="43dp"
-                android:layout_marginTop="136dp"
                 android:ems="10"
-                android:hint="Date Of Birth DD/MM/YYYY"
+                android:hint="Date Of Birth YYYY/MM/DD"
                 android:inputType="date"
                 app:layout_constraintStart_toStartOf="@+id/editText2"
-                app:layout_constraintTop_toBottomOf="@+id/editText2" />
+                app:layout_constraintTop_toBottomOf="@+id/editText22" />
 
             <EditText
                 android:id="@+id/editText6"
-                android:layout_width="395dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 app:layout_constraintStart_toStartOf="@+id/editText5"
-                app:layout_constraintTop_toBottomOf="@+id/editText5" />
+                app:layout_constraintTop_toBottomOf="@+id/editText19" />
 
             <EditText
                 android:id="@+id/editText9"
-                android:layout_width="346dp"
+                android:layout_width="343dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Blood Group"
@@ -98,7 +96,7 @@
 
             <EditText
                 android:id="@+id/editText7"
-                android:layout_width="346dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Hostel"
@@ -108,7 +106,7 @@
 
             <EditText
                 android:id="@+id/editText13"
-                android:layout_width="346dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Weight"
@@ -118,7 +116,7 @@
 
             <EditText
                 android:id="@+id/editText14"
-                android:layout_width="346dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Room Number"
@@ -148,7 +146,7 @@
 
             <EditText
                 android:id="@+id/editText12"
-                android:layout_width="395dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
@@ -159,17 +157,17 @@
 
             <EditText
                 android:id="@+id/editText19"
-                android:layout_width="376dp"
+                android:layout_width="341dp"
                 android:layout_height="46dp"
                 android:ems="10"
                 android:hint="Sex (M/F)"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/editText12"
-                app:layout_constraintTop_toBottomOf="@+id/editText12" />
+                app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
             <EditText
                 android:id="@+id/editText20"
-                android:layout_width="395dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Mobile NUmber"
@@ -179,7 +177,7 @@
 
             <EditText
                 android:id="@+id/editText10"
-                android:layout_width="395dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Latitude"
@@ -189,22 +187,14 @@
 
             <EditText
                 android:id="@+id/editText21"
-                android:layout_width="395dp"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Longitude"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="@+id/editText10"
                 app:layout_constraintTop_toBottomOf="@+id/editText10" />
-            <EditText
-                android:id="@+id/editText22"
-                android:layout_width="395dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="ConfirmPassword"
-                android:inputType="textPassword"
-                app:layout_constraintStart_toStartOf="@+id/editText21"
-                app:layout_constraintTop_toBottomOf="@+id/editText21" />
+
 
             <Button
                 android:id="@+id/button1"
@@ -217,8 +207,18 @@
                 android:shadowRadius="5"
                 android:text="Register"
                 android:textColor="#ffff"
-                app:layout_constraintStart_toStartOf="@+id/editText22"
-                app:layout_constraintTop_toBottomOf="@+id/editText22" />
+                app:layout_constraintStart_toStartOf="@+id/editText21"
+                app:layout_constraintTop_toBottomOf="@+id/editText21" />
+
+            <EditText
+                android:id="@+id/editText22"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="@+id/editText12"
+                app:layout_constraintTop_toBottomOf="@+id/editText12" />
 
 
         </android.support.constraint.ConstraintLayout>
