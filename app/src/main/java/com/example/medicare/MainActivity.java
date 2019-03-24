@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity
       });
     }
     private void requestPermission(){
+        
             ActivityCompat.requestPermissions(this, new String[] {ACCESS_FINE_LOCATION}, 1);
 
     }
