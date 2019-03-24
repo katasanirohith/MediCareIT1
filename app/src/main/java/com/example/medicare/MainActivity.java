@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.content_main);
 
 
-        Window w = getWindow();
+       /* Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         RecyclerView recyclerView = findViewById(R.id.rv_list);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(this,mlist);
 
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
 
 
 
