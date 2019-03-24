@@ -1,4 +1,4 @@
-package com.example.medicare.dummy;
+package com.example.medicare;
 
 public class item {
 
@@ -10,7 +10,7 @@ public class item {
 
     }
 
-    public item( String date, String doctor_name, String disease) {
+    public item(String date, String doctor_name, String disease) {
 
         this.date = date;
         this.doctor_name = doctor_name;
