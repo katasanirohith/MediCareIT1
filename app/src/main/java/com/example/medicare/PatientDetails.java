@@ -31,7 +31,7 @@ public class PatientDetails extends AppCompatActivity {
     editText_weight, editText_roomNumber, editText_password, editText_sex, editText_phone, editText_latitude,
     editText_longitude,editText_confirmPassword;
     private Button btn_register;
-    /*String server_url = "http://172.17.4.115/MediCare/includes/registerUser.php";
+    /*String server_url = "http://172.17.3.188/MediCare/includes/registerUser.php";
     AlertDialog.Builder builder;
    */
     private ProgressDialog progressDialog;
@@ -180,11 +180,11 @@ public class PatientDetails extends AppCompatActivity {
 
                         return params;
                     }
-                };
-                MySingleton.getInstance(PatientDetails.this).addToRequestQueue(stringRequest);*/
+                };*/
+                MySingleton.getInstance(PatientDetails.this).addToRequestQueue(stringRequest);
 
-                RequestQueue requestQueue = (RequestQueue) Volley.newRequestQueue(PatientDetails.this);
-                requestQueue.add(stringRequest);
+               /* RequestQueue requestQueue = (RequestQueue) Volley.newRequestQueue(PatientDetails.this);
+                requestQueue.add(stringRequest);*/
             }
         });
     }
