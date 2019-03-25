@@ -85,10 +85,14 @@ public class PatientDetails extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 try{
                                     JSONObject jsonObject = new JSONObject(response);
-                                    Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
-
-                                    Intent intent = new Intent(PatientDetails.this, MainActivity.class);
-                                    startActivity(intent);
+                                    if(!Boolean.parseBoolean(jsonObject.getString("error"))) {
+                                        Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(PatientDetails.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                    else {
+                                        Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                    }
                                 }
                                 catch (JSONException e) {
                                     e.printStackTrace();
@@ -125,72 +129,10 @@ public class PatientDetails extends AppCompatActivity {
                     }
 
                 };
-                /*StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                builder.setTitle("Server Response");
-                                builder.setMessage("Response :"+response);
-                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        editText__name.setText("");
-                                        editText_medicalId.setText("");
-                                        editText_bloodGroup.setText("");
-                                        editText_dob.setText("");
-                                        editText_emailId.setText("");
-                                        editText_bloodGroup.setText("");
-                                        editText_hostel.setText("");
-                                        editText_weight.setText("");
-                                        editText_roomNumber.setText("");
-                                        editText_password.setText("");
-                                        editText_sex.setText("");
-                                        editText_latitude.setText("");
-                                        editText_longitude.setText("");
-                                        editText_confirmPassword.setText("");
-                                    }
-                                });
-                                AlertDialog alertDialog = builder.create();
-                                alertDialog.show();
-
-                            }
-                        }, new Response.ErrorListener() {
-                               @Override
-                               public void onErrorResponse(VolleyError error) {
-                                   Toast.makeText(PatientDetails.this,"Error...",Toast.LENGTH_SHORT).show();
-                                   error.printStackTrace();
-                            }
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("Pid",medical_id);
-                        params.put("Name",name);
-                        params.put("DOB",dob);
-                        params.put("email",email);
-                        params.put("Bloodgrp",bloodGroup);
-                        params.put("Hostel",hostel);
-                        params.put("weight",weight);
-                        params.put("Roomno",roomNumber);
-                        params.put("Password",password);
-                        params.put("Sex",sex);
-                        params.put("Mob_no",phone);
-                        params.put("lati",latitude);
-                        params.put("longi",longitude);
-                        params.put("ConfirmPass",confirmPassword);
-
-                        return params;
-                    }
-                };*/
                 MySingleton.getInstance(PatientDetails.this).addToRequestQueue(stringRequest);
-
 
                 RequestQueue requestQueue = (RequestQueue) Volley.newRequestQueue(PatientDetails.this);
                 requestQueue.add(stringRequest);
-
-               /* RequestQueue requestQueue = (RequestQueue) Volley.newRequestQueue(PatientDetails.this);
-                requestQueue.add(stringRequest);*/
-
             }
         });
     }

@@ -9,7 +9,7 @@ import com.android.volley.toolbox.Volley;
 
 public class SharedPrefManager{
 
-    private  static SharedPrefManager mInstance;
+    private static SharedPrefManager mInstance;
     private static Context mCtx;
 
     private static  final String SHARED_PREF_NAME = "sharedPrefName12";
