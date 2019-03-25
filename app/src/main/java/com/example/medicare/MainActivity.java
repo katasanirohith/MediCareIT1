@@ -69,17 +69,9 @@ public class MainActivity extends AppCompatActivity
         com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(this,mlist);
 
         recyclerView.setAdapter(adapter);
+<<<<<<< HEAD
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 */
-
-
-
-
-
-
-
-
-
 
 
      /*   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -190,6 +182,7 @@ public class MainActivity extends AppCompatActivity
       });*/
     }
     private void requestPermission(){
+        
             ActivityCompat.requestPermissions(this, new String[] {ACCESS_FINE_LOCATION}, 1);
 
     }
