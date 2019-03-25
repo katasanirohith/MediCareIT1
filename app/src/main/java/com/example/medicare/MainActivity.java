@@ -1,6 +1,7 @@
 package com.example.medicare;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -24,12 +25,23 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -39,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     private Button btn_newUser, login, getLocation;
     private EditText editTextId, editTextPassword;
     private FusedLocationProviderClient client;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +69,9 @@ public class MainActivity extends AppCompatActivity
         com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(this,mlist);
 
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
-
-
-
-
-
-
-
-
-
-
+<<<<<<< HEAD
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+*/
 
 
      /*   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -90,6 +95,63 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     */
+        editTextId = (EditText) findViewById(R.id.editText3);
+        editTextPassword = (EditText) findViewById(R.id.editText4);
+        login = (Button) findViewById(R.id.button);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String medical_id,password;
+                medical_id = editTextId.getText().toString();
+                password = editTextPassword.getText().toString();
+                progressDialog.setMessage("Registering User .. ");
+                progressDialog.show();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                        Constants.URL_LOGIN,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                progressDialog.dismiss();
+                                try{
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if(!jsonObject.getBoolean("error")){
+                                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(
+                                          jsonObject.getString("Id")
+                                        );
+                                        Toast.makeText(getApplicationContext(),"User Login Successful",Toast.LENGTH_LONG).show();
+                                       /* Intent intent = new Intent(MainActivity.this, cardsActitvity.class);
+                                        startActivity(intent);
+                                    */ }
+                                    else {
+                                        Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                    }
+                                 }
+                                catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                progressDialog.hide();
+                                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("Pid",medical_id);
+                        params.put("Name",password);
+
+                        return params;
+                    }
+
+                };
+            }
+        });
         btn_newUser = (Button) findViewById(R.id.button1);
         btn_newUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +161,7 @@ public class MainActivity extends AppCompatActivity
             }
 
         });
-        getLocation = (Button) findViewById(R.id.location);
+       /* getLocation = (Button) findViewById(R.id.location);
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +179,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
           }
-      });
+      });*/
     }
     private void requestPermission(){
 

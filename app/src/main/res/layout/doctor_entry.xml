@@ -20,14 +20,15 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="301dp"
-                android:layout_height="108dp"
+                android:layout_width="179dp"
+                android:layout_height="114dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginEnd="68dp"
                 android:layout_marginRight="68dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/camera_icon" />
@@ -38,7 +39,7 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="16dp"
                 android:ems="10"
                 android:hint="Treatment Date"
                 android:inputType="date"
@@ -51,9 +52,9 @@
                 android:id="@+id/button1"
                 android:layout_width="133dp"
                 android:layout_height="58dp"
-                android:layout_marginStart="128dp"
-                android:layout_marginLeft="128dp"
-                android:layout_marginBottom="120dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginBottom="72dp"
                 android:background="@drawable/new_user_button"
                 android:shadowRadius="5"
                 android:text="Submit"
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:layout_marginTop="156dp"
+                android:layout_marginTop="204dp"
                 android:text="Treatment Date:"
                 android:textColor="#000"
                 android:textSize="17sp"
@@ -214,6 +215,18 @@
                 android:textSize="17sp"
                 app:layout_constraintStart_toEndOf="@+id/Symptoms"
                 app:layout_constraintTop_toBottomOf="@+id/Treatment_slot_entry" />
+
+            <TextView
+                android:id="@+id/Pid_entry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PID"
+                android:textColor="#000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="78dp" />
 
 
         </android.support.constraint.ConstraintLayout>
