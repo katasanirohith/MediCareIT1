@@ -30,6 +30,6 @@ public class MySingleton {
         return requestQueue;
     }
     public <T> void  addToRequestQueue(Request<T> request){
-        requestQueue.add(request);
+        getRequestQueue().add(request);
     }
 }

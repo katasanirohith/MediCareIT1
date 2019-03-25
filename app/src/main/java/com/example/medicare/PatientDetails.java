@@ -1,6 +1,7 @@
 package com.example.medicare;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -85,6 +86,9 @@ public class PatientDetails extends AppCompatActivity {
                                 try{
                                     JSONObject jsonObject = new JSONObject(response);
                                     Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+
+                                    Intent intent = new Intent(PatientDetails.this, MainActivity.class);
+                                    startActivity(intent);
                                 }
                                 catch (JSONException e) {
                                     e.printStackTrace();
@@ -182,6 +186,7 @@ public class PatientDetails extends AppCompatActivity {
 
                 RequestQueue requestQueue = (RequestQueue) Volley.newRequestQueue(PatientDetails.this);
                 requestQueue.add(stringRequest);
+
             }
         });
     }
