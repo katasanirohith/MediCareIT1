@@ -98,14 +98,16 @@ public class MainActivity extends AppCompatActivity
         editTextId = (EditText) findViewById(R.id.editText3);
         editTextPassword = (EditText) findViewById(R.id.editText4);
         login = (Button) findViewById(R.id.button);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please Wait ... ");
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String medical_id,password;
                 medical_id = editTextId.getText().toString();
                 password = editTextPassword.getText().toString();
-                progressDialog.setMessage("Registering User .. ");
-                progressDialog.show();
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,
                         Constants.URL_LOGIN,
@@ -150,8 +152,10 @@ public class MainActivity extends AppCompatActivity
                     }
 
                 };
+                MySingleton.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
             }
         });
+
         btn_newUser = (Button) findViewById(R.id.button1);
         btn_newUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -244,4 +248,5 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 */
+
 }
