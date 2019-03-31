@@ -2,6 +2,7 @@ package com.example.medicare;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -38,7 +39,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.content_main);
 
 
-       /* Window w = getWindow();
+       Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         RecyclerView recyclerView = findViewById(R.id.rv_list);
@@ -67,11 +70,9 @@ public class MainActivity extends AppCompatActivity
         List<item> mlist = new ArrayList<>();
 
         com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(this,mlist);
-
         recyclerView.setAdapter(adapter);
-<<<<<<< HEAD
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-*/
+
 
 
      /*   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -117,14 +118,29 @@ public class MainActivity extends AppCompatActivity
                                 progressDialog.dismiss();
                                 try{
                                     JSONObject jsonObject = new JSONObject(response);
-                                    if(!jsonObject.getBoolean("error")){
-                                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(
-                                          jsonObject.getString("Id")
-                                        );
-                                        Toast.makeText(getApplicationContext(),"User Login Successful",Toast.LENGTH_LONG).show();
-                                       /* Intent intent = new Intent(MainActivity.this, cardsActitvity.class);
+                                    if(!Boolean.parseBoolean(jsonObject.getString("error"))){
+                                        //SharedPrefManager.getInstance(getApplicationContext()).userLogin(
+                                        //  jsonObject.getString("PatientID")
+                                        //);
+
+                                        for(int i=2;i<jsonObject.length();i++){
+
+                                            JSONObject productObject = jsonObject.getJSONObject(i);
+                                            String Pid = productObject.getString("PatientID");
+                                            String Did = productObject.getString("DocID" );
+                                            String Slot = productObject.getString("Slot");                                            Time;
+                                            String Diagnosis = productObject.getString("Diagnosis");
+                                            String Date = productObject.getString("Date");
+
+                                            item Item = new item(Date, Did, Diagnosis, Pid , Slot);
+
+                                        }
+
+                                        Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(MainActivity.this, cardsOverView.class);
                                         startActivity(intent);
-                                    */ }
+                                        finish();
+                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                     }
@@ -146,7 +162,7 @@ public class MainActivity extends AppCompatActivity
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("Pid",medical_id);
-                        params.put("Name",password);
+                        params.put("password",password);
 
                         return params;
                     }

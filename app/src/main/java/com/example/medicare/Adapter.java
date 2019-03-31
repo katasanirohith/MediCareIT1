@@ -33,8 +33,8 @@ public class Adapter extends RecyclerView.Adapter <Adapter.myViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull myViewHolder myViewHolder, int i) {
 
-        myViewHolder.doctor_name.setText(mData.get(i).getDoctor_name());
-        myViewHolder.disease_name.setText(mData.get(i).getDisease());
+        myViewHolder.doctor_id.setText(mData.get(i).getDoctor_id());
+        myViewHolder.disease_name.setText(mData.get(i).getDiagnosis());
         myViewHolder.date_visit.setText(mData.get(i).getDate());
 
 
@@ -47,10 +47,10 @@ public class Adapter extends RecyclerView.Adapter <Adapter.myViewHolder> {
 
     public class myViewHolder extends RecyclerView.ViewHolder{
 
-        TextView doctor_name,disease_name,date_visit;
+        TextView doctor_id,slot,pid,diagnosis,date_visit;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-            doctor_name = itemView.findViewById(R.id.doctor_name);
+            doctor_id = itemView.findViewById(R.id.doctor_id);
             disease_name = itemView.findViewById(R.id.doctor_name2);
             date_visit = itemView.findViewById(R.id.date);
 
