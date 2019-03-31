@@ -17,8 +17,6 @@ public class item {
         this.pid = pid;
     }
 
-
-
     public String getDate() {
         return date;
     }

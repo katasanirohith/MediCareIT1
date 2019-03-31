@@ -36,6 +36,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -65,12 +66,11 @@ public class MainActivity extends AppCompatActivity
        Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        RecyclerView recyclerView = findViewById(R.id.rv_list);
+        final RecyclerView recyclerView = findViewById(R.id.rv_list);
 
-        List<item> mlist = new ArrayList<>();
+        final List<item> mlist = new ArrayList<>();
 
-        com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(this,mlist);
-        recyclerView.setAdapter(adapter);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -117,32 +117,37 @@ public class MainActivity extends AppCompatActivity
                             public void onResponse(String response) {
                                 progressDialog.dismiss();
                                 try{
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    if(!Boolean.parseBoolean(jsonObject.getString("error"))){
+                                    JSONArray jsonArray = new JSONArray(response);
+
+                                    JSONObject initial = jsonArray.getJSONObject(0);
+                                    String error = initial.getString("error");
+                                    String message = initial.getString("message");
+
+                                    if(!Boolean.parseBoolean(error)){
                                         //SharedPrefManager.getInstance(getApplicationContext()).userLogin(
                                         //  jsonObject.getString("PatientID")
                                         //);
 
-                                        for(int i=2;i<jsonObject.length();i++){
+                                        for(int i=1;i<jsonArray.length();i++){
 
-                                            JSONObject productObject = jsonObject.getJSONObject(i);
+                                            JSONObject productObject = jsonArray.getJSONObject(i);
                                             String Pid = productObject.getString("PatientID");
                                             String Did = productObject.getString("DocID" );
-                                            String Slot = productObject.getString("Slot");                                            Time;
-                                            String Diagnosis = productObject.getString("Diagnosis");
+                                            String Slot = productObject.getString("Slot");                                                                                       String Diagnosis = productObject.getString("Diagnosis");
                                             String Date = productObject.getString("Date");
 
                                             item Item = new item(Date, Did, Diagnosis, Pid , Slot);
-
+                                            mlist.add(Item);
                                         }
-
-                                        Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                        com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(MainActivity.this,mlist);
+                                        recyclerView.setAdapter(adapter);
+                                        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(MainActivity.this, cardsOverView.class);
                                         startActivity(intent);
                                         finish();
                                      }
                                     else {
-                                        Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
                                     }
                                  }
                                 catch (JSONException e) {

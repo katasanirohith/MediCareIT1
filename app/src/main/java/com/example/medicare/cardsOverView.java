@@ -9,7 +9,7 @@ public class cardsOverView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cards_over_view);
+        setContentView(R.layout.card_all);
         if(!SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
             startActivity(new Intent(this, MainActivity.class));
