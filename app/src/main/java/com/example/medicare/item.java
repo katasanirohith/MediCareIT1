@@ -1,37 +1,49 @@
 package com.example.medicare;
 
+import android.text.format.Time;
+
+import java.util.Date;
+
 public class item {
 
-    String date;
-    String doctor_name;
-    String disease;
+    String pid;
+    String doctorId;
+    Date date;
+    Time slot;
+    String diagnosis;
 
-    public item() {
+    public void item(String pid, String doctorId, Date date, Time slot, String diagnosis) {
 
-    }
-
-    public item(String date, String doctor_name, String disease) {
-
+        this.pid = pid;
+        this.doctorId = doctorId;
         this.date = date;
-        this.doctor_name = doctor_name;
-        this.disease = disease;
+        this.slot = slot;
+        this.diagnosis = diagnosis;
     }
 
 
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
     public String getDoctor_name() {
-        return doctor_name;
+        return doctorId;
     }
 
     public String getDisease() {
-        return disease;
+        return pid;
     }
 
+    public Time getSlot() {
+        return slot;
+    }
 
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+/*
     public void setDate(String date) {
         this.date = date;
     }
@@ -43,4 +55,5 @@ public class item {
     public void setDisease(String disease) {
         this.disease = disease;
     }
+*/
 }

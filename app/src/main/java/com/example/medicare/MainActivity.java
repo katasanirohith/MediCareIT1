@@ -47,8 +47,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class MainActivity extends AppCompatActivity
         /*implements NavigationView.OnNavigationItemSelectedListener*/ {
-
-    private Button btn_newUser, login, getLocation;
+    private Button btn_newUser, login,getLocation;
     private EditText editTextId, editTextPassword;
     private FusedLocationProviderClient client;
     private ProgressDialog progressDialog;
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.content_main);
 
 
-       /* Window w = getWindow();
+        Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         RecyclerView recyclerView = findViewById(R.id.rv_list);
@@ -69,9 +68,9 @@ public class MainActivity extends AppCompatActivity
         com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(this,mlist);
 
         recyclerView.setAdapter(adapter);
-<<<<<<< HEAD
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-*/
+
 
 
      /*   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -118,9 +117,7 @@ public class MainActivity extends AppCompatActivity
                                 try{
                                     JSONObject jsonObject = new JSONObject(response);
                                     if(!jsonObject.getBoolean("error")){
-                                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(
-                                          jsonObject.getString("Id")
-                                        );
+
                                         Toast.makeText(getApplicationContext(),"User Login Successful",Toast.LENGTH_LONG).show();
                                        /* Intent intent = new Intent(MainActivity.this, cardsActitvity.class);
                                         startActivity(intent);

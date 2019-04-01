@@ -33,7 +33,7 @@ public class Adapter extends RecyclerView.Adapter <Adapter.myViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull myViewHolder myViewHolder, int i) {
 
-        myViewHolder.doctor_name.setText(mData.get(i).getDoctor_name());
+        myViewHolder.d.setText(mData.get(i).getDoctor_name());
         myViewHolder.disease_name.setText(mData.get(i).getDisease());
         myViewHolder.date_visit.setText(mData.get(i).getDate());
 
