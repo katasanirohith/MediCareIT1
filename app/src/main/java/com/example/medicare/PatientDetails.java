@@ -38,6 +38,13 @@ public class PatientDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
+
+        if(SharedPrefManager.getInstance(this).isLoggedIn()){
+            finish();
+            startActivity(new Intent(this, cardsOverView.class));
+            return;
+        }
+
         editText_medicalId = (EditText) findViewById(R.id.editText11);
         editText__name = (EditText) findViewById(R.id.Treatment_date_entry);
         editText_dob = (EditText) findViewById(R.id.editText5);
@@ -89,6 +96,7 @@ public class PatientDetails extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(PatientDetails.this, MainActivity.class);
                                         startActivity(intent);
+                                        finish();
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();

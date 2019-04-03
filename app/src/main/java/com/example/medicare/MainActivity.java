@@ -2,6 +2,7 @@ package com.example.medicare;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -35,22 +36,29 @@ import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+
 public class MainActivity extends AppCompatActivity
         /*implements NavigationView.OnNavigationItemSelectedListener*/ {
-    private Button btn_newUser, login,getLocation;
+
+    private Button btn_newUser, login, getLocation;
     private EditText editTextId, editTextPassword;
     private FusedLocationProviderClient client;
     private ProgressDialog progressDialog;
+    private List<item> mlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,18 +66,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.content_main);
 
 
-        Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        RecyclerView recyclerView = findViewById(R.id.rv_list);
-
-        List<item> mlist = new ArrayList<>();
-
-        com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(this,mlist);
-
-        recyclerView.setAdapter(adapter);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
@@ -115,17 +112,38 @@ public class MainActivity extends AppCompatActivity
                             public void onResponse(String response) {
                                 progressDialog.dismiss();
                                 try{
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    if(!jsonObject.getBoolean("error")){
+                                    JSONArray jsonArray = new JSONArray(response);
 
-                                        Toast.makeText(getApplicationContext(),"User Login Successful",Toast.LENGTH_LONG).show();
-                                       /* Intent intent = new Intent(MainActivity.this, cardsActitvity.class);
-                                        startActivity(intent);
-                                    */ }
-                                    else {
-                                        Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                    JSONObject initial = jsonArray.getJSONObject(0);
+                                    String error = initial.getString("error");
+                                    String message = initial.getString("message");
+
+                                    if(!Boolean.parseBoolean(error)){
+                                        //SharedPrefManager.getInstance(getApplicationContext()).userLogin(
+                                        //  jsonObject.getString("PatientID")
+                                        //);
+
+                                        for(int i=1;i<jsonArray.length();i++){
+
+                                            JSONObject productObject = jsonArray.getJSONObject(i);
+                                            String Pid = productObject.getString("PatientID");
+                                            String Did = productObject.getString("DocID" );
+                                             String Slot = productObject.getString("Slot");
+                                           // String Date = productObject.getString("Date");
+                                            //String Diagnosis = productObject.getString("Diagnosis");
+                                            item Item = new item( Did, Pid , Slot);
+                                            mlist.add(Item);
+                                        }
+                                       Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                                         Intent intent = new Intent(MainActivity.this, cardsOverView.class);
+                                         intent.putExtra("mylist", (Serializable) mlist);
+                                         startActivity(intent);
+                                        finish();
                                     }
-                                 }
+                                    else {
+                                        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                                    }
+                                }
                                 catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -143,7 +161,7 @@ public class MainActivity extends AppCompatActivity
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
                         params.put("Pid",medical_id);
-                        params.put("Name",password);
+                        params.put("password",password);
 
                         return params;
                     }
@@ -184,7 +202,7 @@ public class MainActivity extends AppCompatActivity
     }
     private void requestPermission(){
 
-            ActivityCompat.requestPermissions(this, new String[] {ACCESS_FINE_LOCATION}, 1);
+        ActivityCompat.requestPermissions(this, new String[] {ACCESS_FINE_LOCATION}, 1);
 
     }
 /*
