@@ -8,7 +8,7 @@ public class item {
     String pid,slot;
 
 
-    public item(String date, String doctor_id, String diagnosis, String pid , String slot) {
+    public item( String doctor_id, String pid , String slot) {
 
         this.date = date;
         this.doctor_id = doctor_id;

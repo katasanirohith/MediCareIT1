@@ -40,6 +40,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
@@ -49,6 +50,7 @@ import java.util.Map;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+
 public class MainActivity extends AppCompatActivity
         /*implements NavigationView.OnNavigationItemSelectedListener*/ {
 
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     private EditText editTextId, editTextPassword;
     private FusedLocationProviderClient client;
     private ProgressDialog progressDialog;
+    private List<item> mlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +66,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.content_main);
 
 
-       Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        final RecyclerView recyclerView = findViewById(R.id.rv_list);
-
-        final List<item> mlist = new ArrayList<>();
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
@@ -133,24 +128,30 @@ public class MainActivity extends AppCompatActivity
                                             JSONObject productObject = jsonArray.getJSONObject(i);
                                             String Pid = productObject.getString("PatientID");
                                             String Did = productObject.getString("DocID" );
-                                            String Date = productObject.getString("Date");
+//<<<<<<< HEAD
+                                            //String Date = productObject.getString("Date");
                                             String Slot = productObject.getString("Slot");
-                                            String Diagnosis = productObject.getString("Diagnosis");
+                                            //String Diagnosis = productObject.getString("Diagnosis");
 
-                                            item Item = new item(Date, Did, Diagnosis, Pid , Slot);
+                                            //item Item = new item(Date, Did, Diagnosis, Pid , Slot);
+//=======
+   //                                          String Slot = productObject.getString("Slot");
+                                           // String Date = productObject.getString("Date");
+                                            //String Diagnosis = productObject.getString("Diagnosis");
+                                            item Item = new item( Did, Pid , Slot);
+//>>>>>>> 2277b896cf748a3fc67d9f77f721de93c470ca47
                                             mlist.add(Item);
                                         }
-                                        com.example.medicare.Adapter adapter = new com.example.medicare.Adapter(MainActivity.this,mlist);
-                                        recyclerView.setAdapter(adapter);
-                                        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(MainActivity.this, cardsOverView.class);
-                                        startActivity(intent);
+                                       Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                                         Intent intent = new Intent(MainActivity.this, cardsOverView.class);
+                                         intent.putExtra("mylist", (Serializable) mlist);
+                                         startActivity(intent);
                                         finish();
-                                     }
+                                    }
                                     else {
                                         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
                                     }
-                                 }
+                                }
                                 catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -209,7 +210,7 @@ public class MainActivity extends AppCompatActivity
     }
     private void requestPermission(){
 
-            ActivityCompat.requestPermissions(this, new String[] {ACCESS_FINE_LOCATION}, 1);
+        ActivityCompat.requestPermissions(this, new String[] {ACCESS_FINE_LOCATION}, 1);
 
     }
 /*
