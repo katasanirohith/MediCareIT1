@@ -133,8 +133,9 @@ public class MainActivity extends AppCompatActivity
                                             JSONObject productObject = jsonArray.getJSONObject(i);
                                             String Pid = productObject.getString("PatientID");
                                             String Did = productObject.getString("DocID" );
-                                            String Slot = productObject.getString("Slot");                                                                                       String Diagnosis = productObject.getString("Diagnosis");
                                             String Date = productObject.getString("Date");
+                                            String Slot = productObject.getString("Slot");
+                                            String Diagnosis = productObject.getString("Diagnosis");
 
                                             item Item = new item(Date, Did, Diagnosis, Pid , Slot);
                                             mlist.add(Item);
