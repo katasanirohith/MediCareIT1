@@ -128,10 +128,18 @@ public class MainActivity extends AppCompatActivity
                                             JSONObject productObject = jsonArray.getJSONObject(i);
                                             String Pid = productObject.getString("PatientID");
                                             String Did = productObject.getString("DocID" );
-                                             String Slot = productObject.getString("Slot");
+//<<<<<<< HEAD
+                                            //String Date = productObject.getString("Date");
+                                            String Slot = productObject.getString("Slot");
+                                            //String Diagnosis = productObject.getString("Diagnosis");
+
+                                            //item Item = new item(Date, Did, Diagnosis, Pid , Slot);
+//=======
+   //                                          String Slot = productObject.getString("Slot");
                                            // String Date = productObject.getString("Date");
                                             //String Diagnosis = productObject.getString("Diagnosis");
                                             item Item = new item( Did, Pid , Slot);
+//>>>>>>> 2277b896cf748a3fc67d9f77f721de93c470ca47
                                             mlist.add(Item);
                                         }
                                        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
