@@ -8,52 +8,56 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class Adapter extends RecyclerView.Adapter <Adapter.myViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    Context mContext;
-    List<item> mData;
-
-    public Adapter(Context mContext, List<item> mData) {
-        this.mContext = mContext;
-        this.mData = mData;
+    private Context mContext;
+    private ArrayList<item> mList;
+    Adapter(Context context, ArrayList<item> list) {
+        mContext = context;
+        mList = list;
     }
-
     @NonNull
     @Override
-    public myViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        View v = inflater.inflate(R.layout.cards, viewGroup,false);
-
-        return new myViewHolder(v);
+        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        View view = layoutInflater.inflate(R.layout.cards, viewGroup,false );
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        item items = mList.get(i);
+        TextView pid,did,date;
 
-        myViewHolder.doctor_id.setText(mData.get(i).getDoctor_id());
-        myViewHolder.diagnosis.setText(mData.get(i).getDiagnosis());
-        myViewHolder.date_visit.setText(mData.get(i).getDate());
+        did = viewHolder.doc_id;
+        pid = viewHolder.patient_id;
+        date = viewHolder.date;
 
-
+        date.setText(items.getDate());
+        pid.setText(items.getPid());
+        did.setText(items.getDid());
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mList.size();
     }
 
-    public class myViewHolder extends RecyclerView.ViewHolder{
+    public  class ViewHolder extends  RecyclerView.ViewHolder{
 
-        TextView doctor_id,slot,pid,diagnosis,date_visit;
-        public myViewHolder(@NonNull View itemView) {
+        TextView patient_id,doc_id,date;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            doctor_id = itemView.findViewById(R.id.doctor_name);
-            diagnosis = itemView.findViewById(R.id.doctor_name2);
-            date_visit = itemView.findViewById(R.id.date);
+            patient_id = itemView.findViewById(R.id.doctor_name);
+            doc_id = itemView.findViewById(R.id.doctor_name2);
+            date = itemView.findViewById(R.id.card_title);
 
         }
     }
+
 }

@@ -49,7 +49,7 @@
 
 
             <Button
-                android:id="@+id/buttonReg"
+                android:id="@+id/patientNew"
                 android:layout_width="133dp"
                 android:layout_height="58dp"
                 android:layout_marginStart="120dp"

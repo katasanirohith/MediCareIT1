@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/userId"
+        android:id="@+id/PatientID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iiitLogo" />
 
     <EditText
-        android:id="@+id/pass"
+        android:id="@+id/patientPass"
         android:layout_width="wrap_content"
         android:layout_height="59dp"
         android:layout_marginTop="8dp"
@@ -44,11 +44,11 @@
         android:hint=" Password"
         android:drawableLeft="@drawable/ic_action_pass"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/userId"
-        app:layout_constraintLeft_toLeftOf="@+id/userId"
-        app:layout_constraintRight_toRightOf="@+id/userId"
-        app:layout_constraintStart_toStartOf="@+id/userId"
-        app:layout_constraintTop_toBottomOf="@+id/userId" />
+        app:layout_constraintEnd_toEndOf="@+id/PatientID"
+        app:layout_constraintLeft_toLeftOf="@+id/PatientID"
+        app:layout_constraintRight_toRightOf="@+id/PatientID"
+        app:layout_constraintStart_toStartOf="@+id/PatientID"
+        app:layout_constraintTop_toBottomOf="@+id/PatientID" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -63,10 +63,10 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        app:layout_constraintTop_toBottomOf="@+id/patientPass" />
 
     <Button
-        android:id="@+id/buttonReg"
+        android:id="@+id/patientNew"
         android:layout_width="133dp"
         android:layout_height="44dp"
         android:layout_marginTop="108dp"
@@ -76,7 +76,7 @@
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        app:layout_constraintTop_toBottomOf="@+id/patientPass" />
 
     <Button
         android:id="@+id/location"
@@ -89,6 +89,6 @@
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonReg" />
+        app:layout_constraintTop_toBottomOf="@+id/patientNew" />
 
 </android.support.constraint.ConstraintLayout>

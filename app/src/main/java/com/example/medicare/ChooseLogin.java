@@ -27,7 +27,7 @@ public class ChooseLogin extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent launch_patient = new Intent(ChooseLogin.this, MainActivity.class);
+                        Intent launch_patient = new Intent(ChooseLogin.this, patientLoginMain.class);
                         startActivity(launch_patient);
                     }
                 }
@@ -39,7 +39,7 @@ public class ChooseLogin extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent launch_doc = new Intent(ChooseLogin.this, doctor_registration.class);
+                        Intent launch_doc = new Intent(ChooseLogin.this, doctorLoginMain.class);
                         startActivity(launch_doc);
                     }
                 }

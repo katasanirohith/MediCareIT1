@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/side_nav_bar"
-    tools:context=".PatientDetails">
+    android:fillViewport="true"
+    tools:context=".doctor_registration">
 
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+
+    <!-- everything you already have -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/side_nav_bar"
+        tools:context=".doctor_registration">
     <EditText
         android:id="@+id/editText15"
         android:layout_width="347dp"
@@ -127,4 +140,7 @@
         app:layout_constraintStart_toStartOf="@+id/editText16"
         app:layout_constraintTop_toBottomOf="@+id/editText16" />
 
-</android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+    </TableLayout>
+</ScrollView>

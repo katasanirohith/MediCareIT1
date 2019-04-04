@@ -59,7 +59,7 @@ public class PatientDetails extends AppCompatActivity {
         editText_latitude = (EditText) findViewById(R.id.editText10);
         editText_longitude = (EditText) findViewById(R.id.editText21);
         editText_confirmPassword = (EditText) findViewById(R.id.editText22);
-        btn_register = (Button) findViewById(R.id.buttonReg);
+        btn_register = (Button) findViewById(R.id.patientNew);
         progressDialog = new ProgressDialog(this);
        // builder = new AlertDialog.Builder(PatientDetails.this);
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +94,7 @@ public class PatientDetails extends AppCompatActivity {
                                     JSONObject jsonObject = new JSONObject(response);
                                     if(!Boolean.parseBoolean(jsonObject.getString("error"))) {
                                         Toast.makeText(getApplicationContext(), jsonObject.getString("message"),Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(PatientDetails.this, MainActivity.class);
+                                        Intent intent = new Intent(PatientDetails.this, patientLoginMain.class);
                                         startActivity(intent);
                                         finish();
                                     }

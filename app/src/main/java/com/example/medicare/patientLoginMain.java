@@ -21,34 +21,34 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class doctorLoginMain extends AppCompatActivity {
+public class patientLoginMain extends AppCompatActivity {
 
-    Button registration, login, getLocation;
-    EditText Id, Password;
+    Button patReg, PatLogin, getLocation;
+    EditText Pid, patPassword;
     ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_login_main);
+        setContentView(R.layout.activity_patient_login_main);
 
-        Id = findViewById(R.id.PatientID);
-        Password = findViewById(R.id.patientPass);
-        login = findViewById(R.id.buttonLogin);
+        Pid = findViewById(R.id.PatientID);
+        patPassword = findViewById(R.id.patientPass);
+        PatLogin = findViewById(R.id.patientLogin);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait ... ");
 
-        login.setOnClickListener(new View.OnClickListener() {
+        PatLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String ID, password;
-                ID = Id.getText().toString();
-                password = Password.getText().toString();
+                ID = Pid.getText().toString();
+                password = patPassword.getText().toString();
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                        Constants.URL_LOGIN_DOC,
+                        Constants.URL_LOGIN,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -61,7 +61,8 @@ public class doctorLoginMain extends AppCompatActivity {
 
                                     if(!Boolean.parseBoolean(error)) {
                                         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(doctorLoginMain.this, after_doctor_login_options.class);
+                                        Intent intent = new Intent(patientLoginMain.this, cardsOverView.class);
+                                        intent.putExtra("pid",ID);
                                         startActivity(intent);
                                         finish();
                                     }
@@ -84,21 +85,21 @@ public class doctorLoginMain extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("Username",ID);
-                        params.put("Password",password);
+                        params.put("Pid",ID);
+                        params.put("password",password);
 
                         return params;
                     }
                 };
-                MySingleton.getInstance(doctorLoginMain.this).addToRequestQueue(stringRequest);
+                MySingleton.getInstance(patientLoginMain.this).addToRequestQueue(stringRequest);
             }
         }  );
 
-        registration = findViewById(R.id.patientNew);
-        registration.setOnClickListener(new View.OnClickListener() {
+        patReg = findViewById(R.id.patientNew);
+        patReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent gotoReg = new Intent(doctorLoginMain.this, doctor_registration.class);
+                Intent gotoReg = new Intent(patientLoginMain.this, PatientDetails.class);
                 startActivity(gotoReg);
             }
         });
