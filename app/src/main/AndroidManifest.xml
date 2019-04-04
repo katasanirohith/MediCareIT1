@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".doctor_registration"></activity>
+        <activity android:name=".doctor_doing_treatment" />
+        <activity android:name=".after_doctor_login_options" />
+        <activity android:name=".after_patient_login_options" />
+        <activity android:name=".patentient_appointment" />
         <activity android:name=".cardsOverView" />
         <activity android:name=".PatientDetails" />
         <activity
