@@ -12,26 +12,32 @@
         android:id="@+id/patient_pid"
         android:layout_width="191dp"
         android:layout_height="50dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginBottom="8dp"
         android:text="Enter the PID"
         android:textColor="#000"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" />
 
     <EditText
         android:id="@+id/pid_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="                 PID"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_pid" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_pid"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/authunticate_btn"
