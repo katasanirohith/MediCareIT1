@@ -1,31 +1,13 @@
 package com.example.medicare;
 
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.ClipData;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,16 +16,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,8 +70,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     */
-        editTextId = (EditText) findViewById(R.id.editText3);
-        editTextPassword = (EditText) findViewById(R.id.editText4);
+        editTextId = (EditText) findViewById(R.id.userId);
+        editTextPassword = (EditText) findViewById(R.id.pass);
         login = (Button) findViewById(R.id.button);
 
         progressDialog = new ProgressDialog(this);
@@ -179,7 +158,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        btn_newUser = (Button) findViewById(R.id.button1);
+        btn_newUser = (Button) findViewById(R.id.buttonReg);
         btn_newUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
