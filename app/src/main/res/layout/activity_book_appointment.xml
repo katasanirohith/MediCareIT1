@@ -37,15 +37,14 @@
                 android:id="@+id/patientNew"
                 android:layout_width="133dp"
                 android:layout_height="58dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginBottom="72dp"
+                android:layout_marginTop="48dp"
                 android:background="@drawable/new_user_button"
                 android:shadowRadius="5"
                 android:text="Submit"
                 android:textColor="#ffff"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Treatment_slot_entry" />
 
             <TextView
                 android:id="@+id/Treatment_date"
@@ -76,48 +75,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/Treatment_date" />
 
             <TextView
-                android:id="@+id/Symptoms"
-                android:layout_width="wrap_content"
-                android:layout_height="29dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="36dp"
-                android:text="Symptoms:"
-                android:textColor="#000"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/treatment_slot" />
-
-            <TextView
-                android:id="@+id/Diagnosis"
-                android:layout_width="wrap_content"
-                android:layout_height="29dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="36dp"
-                android:text="Diagnosis:"
-                android:textColor="#000"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Symptoms" />
-
-            <TextView
-                android:id="@+id/Prescription"
-                android:layout_width="wrap_content"
-                android:layout_height="29dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="36dp"
-                android:text="Prescription:"
-                android:textColor="#000"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Diagnosis" />
-
-            <TextView
                 android:id="@+id/Did"
                 android:layout_width="wrap_content"
                 android:layout_height="29dp"
@@ -146,34 +103,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/Full_name_entry" />
 
             <EditText
-                android:id="@+id/Diagnosis_entry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="18dp"
-                android:ems="10"
-                android:hint="Diagnosis"
-                android:inputType="textPersonName"
-                android:textSize="17sp"
-                app:layout_constraintStart_toEndOf="@+id/Diagnosis"
-                app:layout_constraintTop_toBottomOf="@+id/symptoms_entry" />
-
-            <EditText
-                android:id="@+id/Prescription_entry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="18dp"
-                android:ems="10"
-                android:hint="Prescription"
-                android:inputType="textPersonName"
-                android:textSize="17sp"
-                app:layout_constraintStart_toEndOf="@+id/Prescription"
-                app:layout_constraintTop_toBottomOf="@+id/Diagnosis_entry" />
-
-            <EditText
                 android:id="@+id/Doctorid_entry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -186,20 +115,6 @@
                 android:textSize="17sp"
                 app:layout_constraintStart_toEndOf="@+id/Did"
                 app:layout_constraintTop_toBottomOf="@+id/Pid_entry" />
-
-            <EditText
-                android:id="@+id/symptoms_entry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="17dp"
-                android:ems="10"
-                android:hint="Sympotms"
-                android:inputType="textPersonName"
-                android:textSize="17sp"
-                app:layout_constraintStart_toEndOf="@+id/Symptoms"
-                app:layout_constraintTop_toBottomOf="@+id/Treatment_slot_entry" />
 
             <TextView
                 android:id="@+id/Pid"
