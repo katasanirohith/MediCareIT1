@@ -25,6 +25,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.text.TextUtils.isEmpty;
+
 public class cardsOverView extends AppCompatActivity {
     private List<item> mlist = new ArrayList<>();
 
@@ -41,14 +43,33 @@ public class cardsOverView extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_list);
 
         mList = new ArrayList<>();
-        ID = getIntent().getStringExtra("pid");
-        /*
-        mList.add(new item("charan", "doc","2019-08-08"));
-        mlist.add(new item("anil", "gajji", "2018-09-09"));
-        mList.add(new item("chikda", "doc3","2016-08-08"));
-        mlist.add(new item("pantha", "ache", "2013-09-09"));
-*/
+        Intent i = getIntent();
+        ID = i.getStringExtra(Intent.EXTRA_TEXT);
+        //        ID = getIntent().getStringExtra("pid");
 
+        if(ID != null && !ID.isEmpty()) {
+            postRequest();
+        }
+        //Toast.makeText(getApplicationContext(), ID, Toast.LENGTH_LONG).show();
+
+        //mList.add(new item("akra143", "chettinad","DOC001" , "1998-09-09", "morning" , "headache" , "migrane" , "dolo", "nil"));
+//        mlist.add(new item("anil", "gajji", "2018-09-09"));
+  //      mList.add(new item("chikda", "doc3","2016-08-08"));
+    //    mlist.add(new item("pantha", "ache", "2013-09-09"));
+
+/*
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager rvLayoutManager = linearLayoutManager;
+
+        recyclerView.setLayoutManager(rvLayoutManager);
+
+        Adapter adapter = new Adapter(this, mList);
+
+        recyclerView.setAdapter(adapter);*/
+    }
+
+
+    public void postRequest() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_FETCH_CARDVIEWS,
                 new Response.Listener<String>() {
@@ -76,12 +97,14 @@ public class cardsOverView extends AppCompatActivity {
                                     String prescription = productObject.getString("Prescription");
                                     String remarks = productObject.getString("Remarks");
 
-                                    item Item = new item(Pid, Hospital, Did, Date, Slot, symptoms, diagnosis, prescription, remarks);
-                                    mlist.add(Item);
+                                    Toast.makeText(getApplicationContext(), Date, Toast.LENGTH_LONG).show();
+
+                                    //item Item = new item(Pid, Hospital, Did, Date, Slot, symptoms, diagnosis, prescription, remarks);
+                                    //mlist.add(Item);
                                 }
                             }
                             else{
-                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                             }
                         }
                         catch (JSONException e) {
@@ -108,15 +131,5 @@ public class cardsOverView extends AppCompatActivity {
         };
         MySingleton.getInstance(cardsOverView.this).addToRequestQueue(stringRequest);
 
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager rvLayoutManager = linearLayoutManager;
-
-        recyclerView.setLayoutManager(rvLayoutManager);
-
-        Adapter adapter = new Adapter(this, mList);
-
-        recyclerView.setAdapter(adapter);
     }
-
 }

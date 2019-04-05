@@ -16,7 +16,9 @@ public class after_patient_login_options extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_after_patient_login_options);
 
-        Pid = getIntent().getStringExtra("pid");
+        Intent i = getIntent();
+        Pid = i.getStringExtra(Intent.EXTRA_TEXT);
+        //Pid = getIntent().getStringExtra("pid");
 
         bookAppointment = findViewById(R.id.bookAppointment);
         book_appointment();
@@ -31,7 +33,7 @@ public class after_patient_login_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent bookApp = new Intent(after_patient_login_options.this, bookAppointment.class);
-                bookApp.putExtra("pid",Pid);
+                bookApp.putExtra(Intent.EXTRA_TEXT,Pid);
                 startActivity(bookApp);
             }
         });
@@ -42,7 +44,7 @@ public class after_patient_login_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent fetch_history = new Intent(after_patient_login_options.this, cardsOverView.class);
-                fetch_history.putExtra("pid",Pid);
+                fetch_history.putExtra(Intent.EXTRA_TEXT,Pid);
                 startActivity(fetch_history);
             }
         });
