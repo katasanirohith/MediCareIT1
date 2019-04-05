@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".doctorHistory"></activity>
+=======
+        <activity android:name=".see_more_activity"></activity>
+>>>>>>> fe52a9e86b4b2948eb4ac195f62de67a55c8c33b
         <activity android:name=".bookAppointment" />
         <activity android:name=".patientLoginMain" />
         <activity android:name=".doctorLoginMain" />

@@ -145,7 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Diagnosis" />
 
     <TextView
-        android:id="@+id/Remarks"
+        android:id="@+id/Did"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -215,7 +215,7 @@
         android:layout_marginTop="25dp"
         android:text="Remarks"
         android:textSize="17sp"
-        app:layout_constraintStart_toEndOf="@+id/Remarks"
+        app:layout_constraintStart_toEndOf="@+id/Did"
         app:layout_constraintTop_toBottomOf="@+id/Prescription_entry" />
 
     <Button
