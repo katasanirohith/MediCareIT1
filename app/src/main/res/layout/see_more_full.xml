@@ -159,7 +159,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Prescription" />
 
     <TextView
-        android:id="@+id/Treatment_date_entry"
+        android:id="@+id/Full_name_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -180,7 +180,7 @@
         android:text="Treatment Slot"
         android:textSize="17sp"
         app:layout_constraintStart_toEndOf="@+id/treatment_slot"
-        app:layout_constraintTop_toBottomOf="@+id/Treatment_date_entry" />
+        app:layout_constraintTop_toBottomOf="@+id/Full_name_entry" />
 
     <TextView
         android:id="@+id/Diagnosis_entry"
