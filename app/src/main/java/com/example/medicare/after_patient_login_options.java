@@ -20,7 +20,7 @@ public class after_patient_login_options extends AppCompatActivity {
         Pid = i.getStringExtra(Intent.EXTRA_TEXT);
         //Pid = getIntent().getStringExtra("pid");
 
-        bookAppointment = findViewById(R.id.bookAppointment);
+        bookAppointment = findViewById(R.id.treatNewButton);
         book_appointment();
 
         myHistory = findViewById(R.id.patient_history);

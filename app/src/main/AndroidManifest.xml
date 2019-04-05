@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".bookAppointment"></activity>
+        <activity android:name=".doctorHistory"></activity>
+        <activity android:name=".bookAppointment" />
         <activity android:name=".patientLoginMain" />
         <activity android:name=".doctorLoginMain" />
         <activity android:name=".doctor_registration" />

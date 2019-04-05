@@ -62,6 +62,7 @@ public class doctorLoginMain extends AppCompatActivity {
                                     if(!Boolean.parseBoolean(error)) {
                                         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(doctorLoginMain.this, after_doctor_login_options.class);
+                                        intent.putExtra(Intent.EXTRA_TEXT,ID);
                                         startActivity(intent);
                                         finish();
                                     }

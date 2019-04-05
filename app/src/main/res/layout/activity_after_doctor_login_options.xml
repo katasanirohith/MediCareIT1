@@ -8,7 +8,7 @@
     android:background="@drawable/side_nav_bar">
 
     <Button
-        android:id="@+id/bookAppointment"
+        android:id="@+id/treatNewButton"
         android:layout_width="227dp"
         android:layout_height="77dp"
         android:layout_marginTop="232dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/Old_button"
+        android:id="@+id/myHistoryButton"
         android:layout_width="227dp"
         android:layout_height="77dp"
         android:layout_marginTop="80dp"
@@ -31,5 +31,5 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookAppointment" />
+        app:layout_constraintTop_toBottomOf="@+id/treatNewButton" />
 </android.support.constraint.ConstraintLayout>
