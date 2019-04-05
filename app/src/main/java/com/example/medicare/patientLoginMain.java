@@ -61,7 +61,7 @@ public class patientLoginMain extends AppCompatActivity {
 
                                     if(!Boolean.parseBoolean(error)) {
                                         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(patientLoginMain.this, cardsOverView.class);
+                                        Intent intent = new Intent(patientLoginMain.this, after_patient_login_options.class);
                                         intent.putExtra("pid",ID);
                                         startActivity(intent);
                                         finish();

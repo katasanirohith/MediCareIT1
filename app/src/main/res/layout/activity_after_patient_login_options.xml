@@ -8,10 +8,10 @@
     android:background="@drawable/side_nav_bar">
 
     <Button
-        android:id="@+id/treat_button"
+        android:id="@+id/bookAppointment"
         android:layout_width="249dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="232dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="224dp"
         android:background="@drawable/new_user_button"
         android:text="Book an appointment"
         android:textColor="#fff"
@@ -21,15 +21,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/Old_button"
+        android:id="@+id/patient_history"
         android:layout_width="249dp"
-        android:layout_height="78dp"
+        android:layout_height="67dp"
         android:layout_marginTop="80dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/new_user_button"
         android:text="My History"
         android:textColor="#fff"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/treat_button" />
+        app:layout_constraintTop_toBottomOf="@+id/bookAppointment"
+        app:layout_constraintVertical_bias="0.168" />
 </android.support.constraint.ConstraintLayout>

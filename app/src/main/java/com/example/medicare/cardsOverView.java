@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,16 +49,6 @@ public class cardsOverView extends AppCompatActivity {
         mlist.add(new item("pantha", "ache", "2013-09-09"));
 */
 
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager rvLayoutManager = linearLayoutManager;
-
-        recyclerView.setLayoutManager(rvLayoutManager);
-
-        Adapter adapter = new Adapter(this, mList);
-
-        recyclerView.setAdapter(adapter);
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_FETCH_CARDVIEWS,
                 new Response.Listener<String>() {
@@ -66,19 +57,31 @@ public class cardsOverView extends AppCompatActivity {
                         progressDialog.dismiss();
 
                         try {
-                            JSONObject jsonObj = new JSONObject(response);
-                            String error = jsonObj.getString("error");
-                            String message = jsonObj.getString("message");
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject status = jsonArray.getJSONObject(0);
+                            String error = status.getString("error");
+                            String message = status.getString("message");
 
                             if(!Boolean.parseBoolean(error)) {
-                                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(patientLoginMain.this, cardsOverView.class);
-                                intent.putExtra("pid",ID);
-                                startActivity(intent);
-                                finish();
+                                for (int i = 1; i < jsonArray.length(); i++) {
+
+                                    JSONObject productObject = jsonArray.getJSONObject(i);
+                                    String Pid = productObject.getString("PatientID");
+                                    String Hospital = productObject.getString("Hospital");
+                                    String Did = productObject.getString("DocID");
+                                    String Date = productObject.getString("Date");
+                                    String Slot = productObject.getString("Slot");
+                                    String symptoms = productObject.getString("Symptoms");
+                                    String diagnosis = productObject.getString("Diagnosis");
+                                    String prescription = productObject.getString("Prescription");
+                                    String remarks = productObject.getString("Remarks");
+
+                                    item Item = new item(Pid, Hospital, Did, Date, Slot, symptoms, diagnosis, prescription, remarks);
+                                    mlist.add(Item);
+                                }
                             }
-                            else {
-                                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                            else{
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                             }
                         }
                         catch (JSONException e) {
@@ -92,19 +95,28 @@ public class cardsOverView extends AppCompatActivity {
                         progressDialog.hide();
                         Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
                     }
-                }) {
+                })
+        {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Pid",ID);
-                params.put("password",password);
+                params.put("pid",ID);
 
                 return params;
             }
         };
-        MySingleton.getInstance(patientLoginMain.this).addToRequestQueue(stringRequest);
+        MySingleton.getInstance(cardsOverView.this).addToRequestQueue(stringRequest);
 
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager rvLayoutManager = linearLayoutManager;
+
+        recyclerView.setLayoutManager(rvLayoutManager);
+
+        Adapter adapter = new Adapter(this, mList);
+
+        recyclerView.setAdapter(adapter);
     }
 
 }
