@@ -34,7 +34,7 @@
                 app:srcCompat="@drawable/camera_icon" />
 
             <EditText
-                android:id="@+id/Treatment_date_entry"
+                android:id="@+id/Full_name_entry"
                 android:layout_width="198dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
@@ -158,7 +158,7 @@
                 android:inputType="textPersonName"
                 android:textSize="17sp"
                 app:layout_constraintStart_toEndOf="@+id/treatment_slot"
-                app:layout_constraintTop_toBottomOf="@+id/Treatment_date_entry" />
+                app:layout_constraintTop_toBottomOf="@+id/Full_name_entry" />
 
             <EditText
                 android:id="@+id/Diagnosis_entry"
