@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+
+        <!-- everything you already have -->
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/side_nav_bar"
+            tools:context=".PatientDetails">
+
+            <EditText
+                android:id="@+id/editText11"
+                android:layout_width="341dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:hint="Pick a username"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/Treatment_date_entry"
+                app:layout_constraintTop_toBottomOf="@+id/Treatment_date_entry" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="301dp"
+                android:layout_height="108dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="68dp"
+                android:layout_marginRight="68dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/camera_icon" />
+
+            <ImageView
+                android:id="@+id/iiitLogo"
+                android:layout_width="35dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+            <EditText
+                android:id="@+id/Treatment_date_entry"
+                android:layout_width="341dp"
+                android:layout_height="37dp"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toEndOf="@+id/iiitLogo"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="341dp"
+                android:layout_height="43dp"
+                android:ems="10"
+                android:hint="Date Of Birth YYYY/MM/DD"
+                android:inputType="date"
+                app:layout_constraintStart_toStartOf="@+id/Treatment_date_entry"
+                app:layout_constraintTop_toBottomOf="@+id/editText22" />
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                app:layout_constraintStart_toStartOf="@+id/editText5"
+                app:layout_constraintTop_toBottomOf="@+id/editText19" />
+
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_width="343dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Blood Group"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/editText20"
+                app:layout_constraintTop_toBottomOf="@+id/editText20" />
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Hostel"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/editText14"
+                app:layout_constraintTop_toBottomOf="@+id/editText14" />
+
+            <EditText
+                android:id="@+id/editText13"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Weight"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/editText9"
+                app:layout_constraintTop_toBottomOf="@+id/editText9" />
+
+            <EditText
+                android:id="@+id/editText14"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Room Number"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/editText13"
+                app:layout_constraintTop_toBottomOf="@+id/editText13" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="33dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="140dp"
+                app:layout_constraintStart_toStartOf="@+id/iiitLogo"
+                app:layout_constraintTop_toBottomOf="@+id/iiitLogo"
+                app:srcCompat="@drawable/ic_local_hospital_black_24dp" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="33dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="192dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/editText14"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:srcCompat="@drawable/ic_add_location_black_24dp" />
+
+            <EditText
+                android:id="@+id/editText12"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="@+id/editText11"
+                app:layout_constraintTop_toBottomOf="@+id/editText11" />
+
+
+            <EditText
+                android:id="@+id/editText19"
+                android:layout_width="341dp"
+                android:layout_height="46dp"
+                android:ems="10"
+                android:hint="Sex (M/F)"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/editText12"
+                app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
+            <EditText
+                android:id="@+id/editText20"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Mobile NUmber"
+                android:inputType="phone"
+                app:layout_constraintStart_toStartOf="@+id/editText6"
+                app:layout_constraintTop_toBottomOf="@+id/editText6" />
+
+            <EditText
+                android:id="@+id/editText10"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Latitude"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/editText7"
+                app:layout_constraintTop_toBottomOf="@+id/editText7" />
+
+            <EditText
+                android:id="@+id/editText21"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Longitude"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/editText10"
+                app:layout_constraintTop_toBottomOf="@+id/editText10" />
+
+
+            <Button
+                android:id="@+id/patientNew"
+                android:layout_width="133dp"
+                android:layout_height="58dp"
+                android:layout_marginStart="88dp"
+                android:layout_marginLeft="88dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/new_user_button"
+                android:shadowRadius="5"
+                android:text="Register"
+                android:textColor="#ffff"
+                app:layout_constraintStart_toStartOf="@+id/editText21"
+                app:layout_constraintTop_toBottomOf="@+id/editText21" />
+
+            <EditText
+                android:id="@+id/editText22"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="@+id/editText12"
+                app:layout_constraintTop_toBottomOf="@+id/editText12" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </TableLayout>
+</ScrollView>
