@@ -59,7 +59,7 @@ public class PatientDetails extends AppCompatActivity {
         editText_latitude = (EditText) findViewById(R.id.editText10);
         editText_longitude = (EditText) findViewById(R.id.editText21);
         editText_confirmPassword = (EditText) findViewById(R.id.editText22);
-        btn_register = (Button) findViewById(R.id.patientNew);
+        btn_register = (Button) findViewById(R.id.treated_new);
         progressDialog = new ProgressDialog(this);
        // builder = new AlertDialog.Builder(PatientDetails.this);
         btn_register.setOnClickListener(new View.OnClickListener() {
