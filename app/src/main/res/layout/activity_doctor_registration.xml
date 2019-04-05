@@ -23,7 +23,7 @@
             tools:context=".doctor_registration">
 
             <EditText
-                android:id="@+id/editText15"
+                android:id="@+id/specializationText"
                 android:layout_width="347dp"
                 android:layout_height="60dp"
                 android:ems="10"
@@ -84,7 +84,7 @@
                 app:srcCompat="@drawable/ic_local_hospital_black_24dp" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/docId"
                 android:layout_width="344dp"
                 android:layout_height="60dp"
                 android:ems="10"
@@ -100,8 +100,8 @@
                 android:ems="10"
                 android:hint="Shift Type"
                 android:inputType="textPersonName"
-                app:layout_constraintStart_toStartOf="@+id/editText15"
-                app:layout_constraintTop_toBottomOf="@+id/editText15" />
+                app:layout_constraintStart_toStartOf="@+id/specializationText"
+                app:layout_constraintTop_toBottomOf="@+id/specializationText" />
 
             <EditText
                 android:id="@+id/editText17"
@@ -124,7 +124,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editText17" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/docRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="108dp"
@@ -153,8 +153,8 @@
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                app:layout_constraintStart_toStartOf="@+id/editText"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintStart_toStartOf="@+id/docId"
+                app:layout_constraintTop_toBottomOf="@+id/docId" />
 
             <EditText
                 android:id="@+id/Name_entry"
