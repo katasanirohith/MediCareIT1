@@ -25,11 +25,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.text.TextUtils.isEmpty;
+
 public class cardsOverView extends AppCompatActivity {
-    private List<item> mlist = new ArrayList<>();
+    //private List<item> mList = new ArrayList<>();
 
     RecyclerView recyclerView ;
-    ArrayList<item> mList;
+   ArrayList<item> mList;
     private  String ID;
     ProgressDialog progressDialog;
 
@@ -41,50 +43,50 @@ public class cardsOverView extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_list);
 
         mList = new ArrayList<>();
-        ID = getIntent().getStringExtra("pid");
-        /*
-        mList.add(new item("charan", "doc","2019-08-08"));
-        mlist.add(new item("anil", "gajji", "2018-09-09"));
-        mList.add(new item("chikda", "doc3","2016-08-08"));
-        mlist.add(new item("pantha", "ache", "2013-09-09"));
-*/
+        Intent i = getIntent();
+        ID = i.getStringExtra(Intent.EXTRA_TEXT);
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager rvLayoutManager = linearLayoutManager;
+
+        recyclerView.setLayoutManager(rvLayoutManager);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_FETCH_CARDVIEWS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
-
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            JSONObject status = jsonArray.getJSONObject(0);
-                            String error = status.getString("error");
-                            String message = status.getString("message");
+                            JSONObject obj = jsonArray.getJSONObject(0);
+                            String error = obj.getString("error");
+                            String message = obj.getString("message");
+                            if(!Boolean.parseBoolean(error)){
 
-                            if(!Boolean.parseBoolean(error)) {
-                                for (int i = 1; i < jsonArray.length(); i++) {
+                                for(int i=1;i<jsonArray.length();i++){
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String Pid = object.getString("PatientID");
+                                    String Hospital = object.getString("Hospital");
+                                    String DocID = object.getString("DocID");
+                                    String Date = object.getString("Date");
+                                    String Slot = object.getString("Slot");
+                                    String Symptoms = object.getString("Symptoms");
+                                    String Diagnosis = object.getString("Diagnosis");
+                                    String Prescription = object.getString("Prescription");
+                                    String Remarks = object.getString("Remarks");
 
-                                    JSONObject productObject = jsonArray.getJSONObject(i);
-                                    String Pid = productObject.getString("PatientID");
-                                    String Hospital = productObject.getString("Hospital");
-                                    String Did = productObject.getString("DocID");
-                                    String Date = productObject.getString("Date");
-                                    String Slot = productObject.getString("Slot");
-                                    String symptoms = productObject.getString("Symptoms");
-                                    String diagnosis = productObject.getString("Diagnosis");
-                                    String prescription = productObject.getString("Prescription");
-                                    String remarks = productObject.getString("Remarks");
-
-                                    item Item = new item(Pid, Hospital, Did, Date, Slot, symptoms, diagnosis, prescription, remarks);
-                                    mlist.add(Item);
+                                    item items = new item(Pid,Hospital, DocID, Date, Slot, Symptoms, Diagnosis, Prescription, Remarks);
+                                    mList.add(items);
                                 }
+                                Adapter adapter = new Adapter(cardsOverView.this, mList);
+
+                                recyclerView.setAdapter(adapter);
+
                             }
-                            else{
-                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                            }
-                        }
-                        catch (JSONException e) {
+
+
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
@@ -93,30 +95,23 @@ public class cardsOverView extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.hide();
-                        Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
                     }
-                })
-        {
+                }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String , String> params = new HashMap<>();
                 params.put("Pid",ID);
-                params.put("pid",ID);
-
                 return params;
             }
         };
+
         MySingleton.getInstance(cardsOverView.this).addToRequestQueue(stringRequest);
 
+//        mList.add(new item("akra143", "chettinad","DOC001" , "1998-09-09", "morning" , "headache" , "migrane" , "dolo", "nil"));
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager rvLayoutManager = linearLayoutManager;
 
-        recyclerView.setLayoutManager(rvLayoutManager);
 
-        Adapter adapter = new Adapter(this, mList);
-
-        recyclerView.setAdapter(adapter);
     }
 
 }

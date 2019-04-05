@@ -45,7 +45,7 @@ public class doctorLoginMain extends AppCompatActivity {
             public void onClick(View view) {
                 final String ID, password;
                 ID = Id.getText().toString();
-                password = Password.getText().toString();
+                    password = Password.getText().toString();
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,
                         Constants.URL_LOGIN_DOC,
