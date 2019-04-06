@@ -37,7 +37,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
         Intent i = getIntent();
         docID = i.getStringExtra(Intent.EXTRA_TEXT);
 
-        textTreatmentDate = findViewById(R.id.Full_name_entry);
+        textTreatmentDate = findViewById(R.id.dateText);
         textSlot = findViewById(R.id.Treatment_slot_entry);
         textSymptoms = findViewById(R.id.symptoms_entry);
         textdiagnosis = findViewById(R.id.Diagnosis_entry);

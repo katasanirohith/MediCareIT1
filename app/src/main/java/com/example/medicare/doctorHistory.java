@@ -46,7 +46,7 @@ public class doctorHistory extends AppCompatActivity {
         recyclerView.setLayoutManager(rvLayoutManager);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                Constants.URL_TREAT_NEW,
+                Constants.URL_FETCH_DOC,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -46,7 +46,7 @@ public class PatientDetails extends AppCompatActivity {
         }
 
         editText_medicalId = (EditText) findViewById(R.id.editText11);
-        editText__name = (EditText) findViewById(R.id.Full_name_entry);
+        editText__name = (EditText) findViewById(R.id.dateText);
         editText_dob = (EditText) findViewById(R.id.editText5);
         editText_emailId = (EditText) findViewById(R.id.editText6);
         editText_bloodGroup = (EditText) findViewById(R.id.editText9);

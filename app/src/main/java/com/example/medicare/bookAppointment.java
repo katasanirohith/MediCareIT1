@@ -42,18 +42,18 @@ public class bookAppointment extends AppCompatActivity {
         ID = i.getStringExtra(Intent.EXTRA_TEXT);
 
         docId = findViewById(R.id.Doctorid_entry);
-        date = findViewById(R.id.Full_name_entry);
+        date = findViewById(R.id.dateText);
         slot = findViewById(R.id.Treatment_slot_entry);
 
-        pID = findViewById(R.id.pid_entry);
-        pID.setText(ID);
+      //  pID = findViewById(R.id.pid_entry);
+        //pID.setText(ID);
 
         progressDialog = new ProgressDialog(this);
 
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String dateStr, slotStr, uName,patId;
+                final String dateStr, slotStr, uName;
 
                 dateStr = date.getText().toString();
                 slotStr = slot.getText().toString();
@@ -63,7 +63,7 @@ public class bookAppointment extends AppCompatActivity {
                 progressDialog.show();
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                        Constants.URL_TREAT_NEW,
+                        Constants.URL_BOOK_APPOINT,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

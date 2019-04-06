@@ -10,4 +10,5 @@ public class Constants {
     public static final String URL_FETCH_CARDVIEWS = ROOT_URL + "fetch_card_view.php";
     public static final String URL_TREAT_NEW = ROOT_URL + "treatPatient.php";
     public static final String URL_FETCH_DOC = ROOT_URL + "fetchDocHistory.php";
+    public static final String URL_BOOK_APPOINT = ROOT_URL + "bookAppointment.php";
 }
