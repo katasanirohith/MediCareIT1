@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,10 +26,9 @@ import java.util.Map;
 public class doctor_doing_treatment extends AppCompatActivity {
 
     String docID;
-    EditText textTreatmentDate, textSlot, textSymptoms, textdiagnosis, textPrescription, textRemarks, pid;
+    EditText textTreatmentDate, textSlot, textSymptoms, textdiagnosis, textPrescription, textRemarks;
     Button submitButton;
     ProgressDialog progressDialog;
-    TextView Did;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,27 +37,21 @@ public class doctor_doing_treatment extends AppCompatActivity {
         Intent i = getIntent();
         docID = i.getStringExtra(Intent.EXTRA_TEXT);
 
-
-        Did = findViewById(R.id.DID);
-        Did.setText(docID);
-
-        textTreatmentDate = findViewById(R.id.date__entry);
+        textTreatmentDate = findViewById(R.id.Full_name_entry);
         textSlot = findViewById(R.id.Treatment_slot_entry);
         textSymptoms = findViewById(R.id.symptoms_entry);
         textdiagnosis = findViewById(R.id.Diagnosis_entry);
         textPrescription = findViewById(R.id.Prescription_entry);
         textRemarks = findViewById(R.id.Remarks_entry);
-        pid = findViewById(R.id.pid_entry);
 
-        submitButton = findViewById(R.id.booked);
+        submitButton = findViewById(R.id.treated_new);
         progressDialog = new ProgressDialog(this);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String date, slot, symptoms, diagnosis, prescription, remarks, Pid;
+                final String date, slot, symptoms, diagnosis, prescription, remarks;
 
-                Pid = pid.getText().toString();
                 date = textTreatmentDate.getText().toString();
                 slot = textSlot.getText().toString();
                 symptoms = textSymptoms.getText().toString();
@@ -104,7 +96,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("Pid",Pid);
+                        params.put("Pid",);
                         params.put("Hospital_name","");
                         params.put("Username",docID);
                         params.put("treatment_date",date);

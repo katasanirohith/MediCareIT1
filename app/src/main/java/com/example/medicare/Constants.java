@@ -1,6 +1,7 @@
 package com.example.medicare;
 
 public class Constants {
+
     private static final String ROOT_URL = "http://172.17.4.115/MediCare/includes/";
     public static final String URL_LOGIN = ROOT_URL + "patientLogin.php";
     public static final String URL_REGISTER = ROOT_URL + "registerUser.php";
@@ -8,6 +9,5 @@ public class Constants {
     public static final String URL_LOGIN_DOC = ROOT_URL + "docLogin.php";
     public static final String URL_FETCH_CARDVIEWS = ROOT_URL + "fetch_card_view.php";
     public static final String URL_TREAT_NEW = ROOT_URL + "treatPatient.php";
-    public static final String URL_BOOK_APPOINTMENT = ROOT_URL + "bookAppointment.php";
-
+    public static final String URL_FETCH_DOC = ROOT_URL + "fetchDocHistory.php";
 }

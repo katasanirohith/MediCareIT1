@@ -26,8 +26,8 @@
                 android:ems="10"
                 android:hint="Pick a username"
                 android:inputType="textPersonName"
-                app:layout_constraintStart_toStartOf="@+id/date__entry"
-                app:layout_constraintTop_toBottomOf="@+id/date__entry" />
+                app:layout_constraintStart_toStartOf="@+id/Full_name_entry"
+                app:layout_constraintTop_toBottomOf="@+id/Full_name_entry" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -54,7 +54,7 @@
                 app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
             <EditText
-                android:id="@+id/date__entry"
+                android:id="@+id/Full_name_entry"
                 android:layout_width="341dp"
                 android:layout_height="37dp"
                 android:ems="10"
@@ -70,7 +70,7 @@
                 android:ems="10"
                 android:hint="Date Of Birth YYYY/MM/DD"
                 android:inputType="date"
-                app:layout_constraintStart_toStartOf="@+id/date__entry"
+                app:layout_constraintStart_toStartOf="@+id/Full_name_entry"
                 app:layout_constraintTop_toBottomOf="@+id/editText22" />
 
             <EditText
@@ -197,7 +197,7 @@
 
 
             <Button
-                android:id="@+id/booked"
+                android:id="@+id/treated_new"
                 android:layout_width="133dp"
                 android:layout_height="58dp"
                 android:layout_marginStart="88dp"

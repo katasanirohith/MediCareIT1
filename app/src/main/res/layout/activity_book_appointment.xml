@@ -19,7 +19,7 @@
             tools:context=".PatientDetails">
 
             <EditText
-                android:id="@+id/date__entry"
+                android:id="@+id/Full_name_entry"
                 android:layout_width="198dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
@@ -34,20 +34,17 @@
 
 
             <Button
-                android:id="@+id/booked"
+                android:id="@+id/treated_new"
                 android:layout_width="133dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_height="58dp"
+                android:layout_marginTop="48dp"
                 android:background="@drawable/new_user_button"
                 android:shadowRadius="5"
                 android:text="Submit"
                 android:textColor="#ffff"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/treatment_slot"
-                app:layout_constraintVertical_bias="0.344" />
+                app:layout_constraintTop_toBottomOf="@+id/Treatment_slot_entry" />
 
             <TextView
                 android:id="@+id/Treatment_date"
@@ -103,7 +100,7 @@
                 android:inputType="textPersonName"
                 android:textSize="17sp"
                 app:layout_constraintStart_toEndOf="@+id/treatment_slot"
-                app:layout_constraintTop_toBottomOf="@+id/date__entry" />
+                app:layout_constraintTop_toBottomOf="@+id/Full_name_entry" />
 
             <EditText
                 android:id="@+id/Doctorid_entry"

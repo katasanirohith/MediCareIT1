@@ -46,7 +46,7 @@ public class PatientDetails extends AppCompatActivity {
         }
 
         editText_medicalId = (EditText) findViewById(R.id.editText11);
-        editText__name = (EditText) findViewById(R.id.date__entry);
+        editText__name = (EditText) findViewById(R.id.Full_name_entry);
         editText_dob = (EditText) findViewById(R.id.editText5);
         editText_emailId = (EditText) findViewById(R.id.editText6);
         editText_bloodGroup = (EditText) findViewById(R.id.editText9);
@@ -59,7 +59,7 @@ public class PatientDetails extends AppCompatActivity {
         editText_latitude = (EditText) findViewById(R.id.editText10);
         editText_longitude = (EditText) findViewById(R.id.editText21);
         editText_confirmPassword = (EditText) findViewById(R.id.editText22);
-        btn_register = (Button) findViewById(R.id.booked);
+        btn_register = (Button) findViewById(R.id.treated_new);
         progressDialog = new ProgressDialog(this);
        // builder = new AlertDialog.Builder(PatientDetails.this);
         btn_register.setOnClickListener(new View.OnClickListener() {
