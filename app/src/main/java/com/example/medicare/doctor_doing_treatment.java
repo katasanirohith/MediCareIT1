@@ -43,7 +43,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
         Did = findViewById(R.id.DID);
         Did.setText(docID);
 
-        textTreatmentDate = findViewById(R.id.Full_name_entry);
+        textTreatmentDate = findViewById(R.id.date__entry);
         textSlot = findViewById(R.id.Treatment_slot_entry);
         textSymptoms = findViewById(R.id.symptoms_entry);
         textdiagnosis = findViewById(R.id.Diagnosis_entry);
@@ -51,7 +51,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
         textRemarks = findViewById(R.id.Remarks_entry);
         pid = findViewById(R.id.pid_entry);
 
-        submitButton = findViewById(R.id.treated_new);
+        submitButton = findViewById(R.id.booked);
         progressDialog = new ProgressDialog(this);
 
         submitButton.setOnClickListener(new View.OnClickListener() {

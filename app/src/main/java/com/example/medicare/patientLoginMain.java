@@ -95,7 +95,7 @@ public class patientLoginMain extends AppCompatActivity {
             }
         }  );
 
-        patReg = findViewById(R.id.treated_new);
+        patReg = findViewById(R.id.booked);
         patReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

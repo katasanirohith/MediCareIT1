@@ -8,4 +8,6 @@ public class Constants {
     public static final String URL_LOGIN_DOC = ROOT_URL + "docLogin.php";
     public static final String URL_FETCH_CARDVIEWS = ROOT_URL + "fetch_card_view.php";
     public static final String URL_TREAT_NEW = ROOT_URL + "treatPatient.php";
+    public static final String URL_BOOK_APPOINTMENT = ROOT_URL + "bookAppointment.php";
+
 }

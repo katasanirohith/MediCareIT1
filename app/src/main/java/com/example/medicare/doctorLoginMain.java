@@ -95,7 +95,7 @@ public class doctorLoginMain extends AppCompatActivity {
             }
         }  );
 
-        registration = findViewById(R.id.treated_new);
+        registration = findViewById(R.id.booked);
         registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
