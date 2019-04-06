@@ -31,7 +31,7 @@ public class doctorHistory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_history);
+        setContentView(R.layout.card_all);
 
         recyclerView = findViewById(R.id.rv_list);
 
@@ -94,7 +94,7 @@ public class doctorHistory extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String , String> params = new HashMap<>();
-                params.put("Did",ID);
+                params.put("Username",ID);
                 return params;
             }
         };

@@ -28,8 +28,8 @@ public class bookAppointment extends AppCompatActivity {
 
     EditText docId, date, slot;
     Button book;
-    TextView pID;
-    String ID;
+    TextView myID;
+    String patientID;
     ProgressDialog progressDialog;
 
 
@@ -39,14 +39,18 @@ public class bookAppointment extends AppCompatActivity {
         setContentView(R.layout.activity_book_appointment);
 
         Intent i = getIntent();
-        ID = i.getStringExtra(Intent.EXTRA_TEXT);
+        patientID = i.getStringExtra(Intent.EXTRA_TEXT);
+
+        Toast.makeText(getApplicationContext(), patientID,Toast.LENGTH_LONG).show();
+
 
         docId = findViewById(R.id.Doctorid_entry);
         date = findViewById(R.id.dateText);
         slot = findViewById(R.id.Treatment_slot_entry);
+        book = findViewById(R.id.treated_new);
 
-      //  pID = findViewById(R.id.pid_entry);
-        //pID.setText(ID);
+        myID = findViewById(R.id.Pid_entry);
+        myID.setText(patientID);
 
         progressDialog = new ProgressDialog(this);
 
@@ -96,7 +100,7 @@ public class bookAppointment extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("Pid",ID);
+                        params.put("Pid",patientID);
                         params.put("Username",uName);
                         params.put("Date",dateStr);
                         params.put("Slot",slotStr);

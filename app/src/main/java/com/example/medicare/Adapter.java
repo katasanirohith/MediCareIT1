@@ -39,7 +39,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         date.setText(items.getDate());
         pid.setText(items.getPid());
-        did.setText(items.getDid());
+        did.setText(items.getSymptoms());
     }
 
     @Override
