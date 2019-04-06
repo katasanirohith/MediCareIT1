@@ -26,7 +26,7 @@ import java.util.Map;
 public class doctor_doing_treatment extends AppCompatActivity {
 
     String docID;
-    EditText textTreatmentDate, textSlot, textSymptoms, textdiagnosis, textPrescription, textRemarks;
+    EditText textTreatmentDate, textSlot, textSymptoms, textdiagnosis, textPrescription, textRemarks,pidText;
     Button submitButton;
     ProgressDialog progressDialog;
 
@@ -43,6 +43,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
         textdiagnosis = findViewById(R.id.Diagnosis_entry);
         textPrescription = findViewById(R.id.Prescription_entry);
         textRemarks = findViewById(R.id.Remarks_entry);
+        pidText = findViewById(R.id.pid_entry);
 
         submitButton = findViewById(R.id.treated_new);
         progressDialog = new ProgressDialog(this);
@@ -50,7 +51,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String date, slot, symptoms, diagnosis, prescription, remarks;
+                final String date, slot, symptoms, diagnosis, prescription, remarks,patId;
 
                 date = textTreatmentDate.getText().toString();
                 slot = textSlot.getText().toString();
@@ -58,6 +59,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
                 diagnosis = textdiagnosis.getText().toString();
                 prescription = textPrescription.getText().toString();
                 remarks = textRemarks.getText().toString();
+                patId = pidText.getText().toString();
 
                 progressDialog.setMessage("Registering User .. ");
                 progressDialog.show();
@@ -96,7 +98,7 @@ public class doctor_doing_treatment extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("Pid",);
+                        params.put("Pid",patId);
                         params.put("Hospital_name","");
                         params.put("Username",docID);
                         params.put("treatment_date",date);
